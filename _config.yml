@@ -1,179 +1,200 @@
-# Fuse Core Theme for Jekyll - Settings
-# https://github.com/tsjensen/fuse-core
+# The Site Settings
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2017-2019 Cotes Chung
+# MIT licensed
+
+
+# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+#--------------------------
+
+title: Chirpy                          # the main title
+
+tagline: A text-focused Jekyll theme.  # it will display as the sub-title
+
+description: >-                        # used by seo meta and the atom feed
+  A minimal, portfolio, sidebar,
+  bootstrap Jekyll theme with responsive web design
+  and focuses on text presentation.
+
+# Replace with the website url, e.g. 'https://username.github.io'
+url: 'protocol://domain'
+
+author: your_full_name                  # change to your full name
+
+avatar: /assets/img/sample/avatar.jpg   # support internet resources
+
+github:
+  username: github_username             # change to your github username
+
+twitter:
+  username: twitter_username            # change to your twitter username
+
+social:
+  name: your_full_name                  # it will shows as the copyright owner in Footer
+  email: example@doamin.com             # change to your email address
+  links:
+    # The first element serves as the copyright owner's link
+    - https://twitter.com/username      # change to your twitter homepage
+    - https://github.com/username       # change to your github homepage
+    # Uncomment below to add more social links
+    # - https://www.facebook.com/username
+    # - https://www.linkedin.com/in/username
+
+google_site_verification: google_meta_tag_verification # change to your verification string
+
+#--------------------------
+
+
+# Only if your site type is GitHub Project sites and doesn't have a custom domain,
+# change below value to '/projectname'.
+baseurl: ''
+
+# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
+timezone: Asia/Shanghai
+
+google_analytics:
+  id: ''          # Fill with your Google Analytics ID
+  pv:
+    # The Google Analytics pageviews switch.
+    # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
+    enabled: false
+    # the next options only valid when `google_analytics.pv` is enabled.
+    proxy_url: ''
+    proxy_endpoint: ''
+    cache: false  # pv data local cache, good for the users from GFW area.
+
+disqus:
+  comments: false  # boolean type, the global switch for posts comments.
+  shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+
+
+# Prefer color scheme setting, available values:
+#
+#     dual   - Follow the system prefer color by default, and a toggle will display
+#              in the left bottom of Sidebar, which used for switch the theme between dark and light.
+#
+#     light  - Use the light color scheme
+#
+#     dark   - Use the dark color scheme
+#
+theme_mode: dual
+
+# boolean type, global switch for ToC in posts.
+toc: true
+
+paginate: 10
 
 markdown: kramdown
-permalink: pretty
-exclude: ['README.*', 'LICENSE.txt']
+
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: 'highlight'
+    # default_lang: console
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+# DO NOT change this unless you're a Pro user on Jekyll and Web development,
+# or you think you're smart enough to change other relevant URLs within this template.
+permalink: /posts/:title/
+
+defaults:
+  -
+    scope:
+      path: ""          # An empty string here means all files in the project
+      type: posts
+    values:
+      layout: post
+      comments: true    # Enable comments in posts.
+      toc: true         # Display TOC column in posts.
+      location: Post
+      breadcrumb:
+        -
+          label: Posts
+          url: /
+  -
+    scope:
+      path: _drafts
+    values:
+      comments: false
+  -
+    scope:
+      path: tags
+    values:
+      tab_active: Tags
+      location: Tag
+      breadcrumb:
+        -
+          label: Home
+          url: /
+        -
+          label: Tags
+          url: /tabs/tags/
+  -
+    scope:
+      path: categories
+    values:
+      tab_active: Categories
+      location: Category
+      breadcrumb:
+        -
+          label: Home
+          url: /
+        -
+          label: Categories
+          url: /tabs/categories/
+  -
+    scope:
+      path: tabs
+    values:
+      layout: page
+      dynamic_title: true    # Hide title in mobile screens.
+      breadcrumb:
+        -
+          label: Home
+          url: /
+
+
 sass:
-    style: expanded
+  sass_dir: /assets/css
+  style: compressed
 
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: []
 
-# CAUTION
-# When modifying this file, take care to preserve the indentation. This is YAML ...
+exclude:
+  - vendor        # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
+  - Gemfile.lock
+  - Gemfile
+  - tools
+  - docs
+  - README.md
+  - LICENSE
 
-# Main Headline, name required, subtitle optional
-name: Fuse Core
-#subtitle:
-subtitle: Frontend Developer
-
-# Title attribute of HTML Page, uses 'name' from above if empty
-title:
-
-# Information for web crawlers / Google, all of them optional
-# 'description' and 'keywords' simply set the corresponding meta tags,
-# 'crawl' is the 'Robots' tag http://www.robotstxt.org/meta.html
-robots:
-    description: One line of text describing the content of the page in less than 140 characters.
-    keywords: foo, bar, baz
-    crawl: index,follow
-
-# website address when deployed, also given as canonical link
-url: https://tsjensen.github.io/fuse-core/
-
-# The 'baseurl' is prepended to all website-internal links.
-# 'baseurl' will often be '', but for a project page on gh-pages, it needs to be the project name.
-# If not empty, be careful to keep the leading slash, and don't add a slash at the end.
-#baseurl: ''
-baseurl: '/fuse-core'
-
-# Enable Google Analytics. Leave empty (just "ga:" with subitems commented out) to disable.
-# In order to comply with EU cookie law, enable 'cookieconsent' to show a little popup asking users to acknowledge the GA cookies.
-# Also, some places require you to anonymize the users' IPs, which can be enabled via 'anonymizeip' below. You normally want that.
-# https://support.google.com/analytics/answer/2763052
-#ga:
-ga:
-    account: 'UA-120960520-1'
-    cookieconsent: true
-    anonymizeip: true
-
-
-# A picture of you, square(!), at least 180x180 pixels, more is better. Recommended file size < 100 KB.
-# Leave empty for generic placeholder image.
-# You can use your GitHub image:
-avatar: "https://avatars0.githubusercontent.com/u/8897534"
-#avatar: "images/jonathan_doe.jpg"
-#avatar:
-
-
-# All the social media and other sites that we want to link to. The 'show' flag determines if the link is shown.
-# The order of this list controls the order of the links on the page. Feel free to add.
-links:
-  - xing:
-      name: Xing
-      show: false
-      href: https://www.xing.com/profile/YOUR_XING_USERNAME/
-      icon: fab fa-xing
-  - linkedin:
-      name: LinkedIn
-      show: false
-      href: https://linkedin.com/in/YOUR_LINKEDIN_USERNAME/
-      icon: fab fa-linkedin
-  - googleplus:
-      name: Google+
-      show: false
-      href: https://plus.google.com/+YOUR_GOOGLEPLUS_USERNAME
-      icon: fab fa-google-plus
-  - twitter:
-      name: Twitter
-      show: true
-      href: https://twitter.com/YOUR_TWITTER_USERNAME
-      icon: fab fa-twitter
-  - weibo:
-      name: 微博
-      show: true
-      href: https://weibo.com/YOUR_WEIBO_USERNAME
-      icon: fab fa-weibo
-  - vine:
-      name: Vine
-      show: false
-      href: https://vine.co/YOUR_VINE_USERNAME
-      icon: fab fa-vine
-  - facebook:
-      name: Facebook
-      show: false
-      href: https://facebook.com/YOUR_FB_USERNAME
-      icon: fab fa-facebook
-  - vkontakte:
-      name: ВКонтакте
-      show: true
-      href: https://vk.com/YOUR_VK_USERNAME
-      icon: fab fa-vk
-  - instagram:
-      name: Instagram
-      show: false
-      href: https://instagram.com/YOUR_INSTAGRAM_USERNAME
-      icon: fab fa-instagram
-  - flickr:
-      name: Flickr
-      show: false
-      href: https://flickr.com/photos/YOUR_FLICKR_USERNAME
-      icon: fab fa-flickr
-  - steam:
-      name: Steam
-      show: false
-      href: http://steamcommunity.com/id/YOUR_STEAM_CUSTOM_ID
-      icon: fab fa-steam
-  - soundcloud:
-      name: Soundcloud
-      show: false
-      href: https://soundcloud.com/YOUR_SOUNDCLOUD_USERNAME
-      icon: fab fa-soundcloud
-  - lastfm:
-      name: Last.fm
-      show: false
-      href: http://www.last.fm/user/YOUR_LASTFM_USERNAME
-      icon: fab fa-lastfm
-  - github:
-      name: GitHub
-      show: true
-      href: https://github.com/tsjensen
-      icon: fab fa-github
-  - codepen:
-      name: CodePen
-      show: false
-      href: https://codepen.io/YOUR_CODEPEN_USERNAME
-      icon: fab fa-codepen
-  - stackoverflow:
-      name: Stack Overflow
-      show: false
-      href: https://stackoverflow.com/users/YOUR_SO_USERNAME/
-      icon: fab fa-stack-overflow
-  - reddit:
-      name: Reddit
-      show: false
-      href: https://reddit.com/user/YOUR_REDDIT_USERNAME
-      icon: fab fa-reddit
-  - medium:
-      name: Medium
-      show: false
-      href: https://medium.com/@YOUR_MEDIUM_USERNAME
-      icon: fab fa-medium
-  - tumblr:
-      name: Tumblr
-      show: false
-      href: https://YOUR_TUMBLR_USERNAME.tumblr.com/
-      icon: fab fa-tumblr
-  - blog:
-      name: Blog
-      show: true
-      href: http://host.domain/your_blog
-      icon: fas fa-book-open
-  - email:
-      name: Email
-      show: true
-      href: mailto:jonathan.doe@host.domain
-      icon: fas fa-envelope
-  - publickey:
-      name: PGP Key
-      show: true
-      href: https://pastebin.com/raw/YOUR_PUBLIC_KEY
-      icon: fas fa-key
-
-
-# Extra HTML which will be displayed below the links. Keep it short. Leave empty to disable.
-#extra_html:
-extra_html: >
-    Any (multiline) text containing simple HTML,
-    such as links or ... lorem ipsum.
-
-#EOF
+sitemap_exclude:  # Sitemap will exclude the following items.
+  fuzzy:
+    - /assets/
+  accurate:
+    - /norobots/
+    - /tabs/
+    - /categories/
+    - /tags/
+    - /posts/
+    - 404.html
+    - feed.xml
+    - sitemap.xml
+    - robots.txt
+    - redirects.json
