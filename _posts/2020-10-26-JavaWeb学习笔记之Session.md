@@ -1,4 +1,4 @@
-# Session（重点）
+# **Session（重点）**
 **1，什么是Session？**
 
  - 服务器会对每一个用户（浏览器）创建一个Session对象
