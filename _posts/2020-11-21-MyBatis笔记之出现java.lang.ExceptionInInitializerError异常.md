@@ -1,6 +1,4 @@
-# MyBatis笔记之出现java.lang.ExceptionInInitializerError异常
-
-**在运行Test类的时候很有可能会出现这个错误，接下来说几个解决方法**
+## **在运行Test类的时候很有可能会出现这个错误，接下来说几个解决方法**
 
 ![image-20201124211830290](C:\Users\28668\AppData\Roaming\Typora\typora-user-images\image-20201124211830290.png)
 
